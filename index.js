@@ -9,53 +9,16 @@ function getComputerChoice() {
     return random
 }
 
-// function playRound(rps) {
-// // All losing scenarios
-// console.log(getComputerChoice())
-//     if (getComputerChoice() === scissors && rps === paper) {
-//         console.log('You lose! Scissors beat paper!') }
-//     if (getComputerChoice() === rock && rps === scissors) {
-//         console.log('You Lose! Rock beats scissors!') }
-//     if (getComputerChoice() === paper && rps === rock) {
-//         console.log('You Lose! Paper beats rock!') }
-// // All draw scenarios
-//     if (getComputerChoice() === paper && rps === paper) {
-//         console.log('Draw!') }
-//     if (getComputerChoice() === scissors && rps === scissors) {
-//         console.log('Draw!') }
-//     if (getComputerChoice() === rock && rps === rock) {
-//         console.log('Draw!') }
-// // All winning scenatios
-//     if (getComputerChoice() === scissors && rps === rock) {
-//         console.log('You Win! Rock beats scissors!') }
-//     if (getComputerChoice() === rock && rps === paper) {
-//         console.log('You Win! Paper beats rock!') }
-//     if (getComputerChoice() === paper && rps === scissors) {
-//         console.log('You Win! Scissors beat paper!') }
-// }
-
 function playRound(rps) {
-    console.log(getComputerChoice())
-
-    if (getComputerChoice() == rock && rps == rock) {
-        console.log('Draw!')
-        }else if (rps == paper) {
-            console.log('You win! Paper beats rock!')
-        }else if (rps == scissors) {
-            console.log('You lose! Rock beats scissors!')
-        }
-   if (getComputerChoice() == paper && rps == paper) {
-        console.log('Draw!')
-        }else if (rps == rock) {
-            console.log('You lose! Paper beats rock!')
-        }else if (rps == scissors) {
-            console.log('You win! Scissors beat paper!')
-        }
-   if (getComputerChoice() == scissors && rps == scissors) {
-        console.log('Draw!')
-        }else if (rps == paper) {
-            console.log('You lose! Scissors beat paper!')
-        }else if (rps == rock) {
-            console.log('You win! Rock beats scissors!')
-        }
+    let choiceVar = getComputerChoice();
+    console.log(choiceVar);
+    if (choiceVar == rock && rps == rock || choiceVar == paper
+    && rps == paper || choiceVar == scissors && rps == scissors) {
+        console.log('Draw!') }
+    if (choiceVar == rock && rps == scissors || choiceVar == paper
+    && rps == rock || choiceVar == scissors && rps == paper) {
+        console.log('You lose!') }
+    if (choiceVar == rock && rps == paper || choiceVar == paper
+    && rps == scissors || choiceVar == scissors && rps == rock) {
+        console.log('You win!')}
 }
