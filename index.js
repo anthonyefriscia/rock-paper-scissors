@@ -15,17 +15,12 @@ function playRound() {
     let choiceVar = getComputerChoice();
     console.log(choiceVar);
     
-    const isDrawRock = choiceVar === rock && rps === rock
-    const isDrawPaper = choiceVar === paper && rps === paper 
-    const isDrawScissors = choiceVar === scissors && rps === scissors
-
-    const youWinRock = choiceVar === scissors && rps === rock
-    const youWinPaper = choiceVar === rock && rps === paper
-    const youWinScissors = choiceVar === paper && rps === scissors
-
-    const youLoseRock = choiceVar === paper && rps === rock
-    const youLosePaper = choiceVar === scissors && rps === paper
-    const youLoseScissors = choiceVar === rock && rps === scissors
+    const isDraw = choiceVar === rock && rps === 'rock' || choiceVar === paper
+    && rps === 'paper' || choiceVar === scissors && rps === 'scissors';
+    const youWin = choiceVar === scissors && rps === 'rock' || choiceVar === 
+    rock && rps === 'paper' || choiceVar === paper && rps === 'scissors';
+    const youLose = choiceVar === paper && rps === 'rock' || choiceVar === 
+    scissors && rps === 'paper' || choiceVar === rock && rps === 'scissors';
 
     if (isDraw) {
         console.log('Draw! Try again!')
