@@ -13,6 +13,7 @@ function getComputerChoice() {
 function playRound() {
     let rps = prompt().toLowerCase();
     let choiceVar = getComputerChoice();
+    let checkRps = rps
     
     const isDraw = choiceVar === rock && rps === 'rock' || choiceVar === paper
     && rps === 'paper' || choiceVar === scissors && rps === 'scissors';
@@ -23,24 +24,28 @@ function playRound() {
     const youLose = choiceVar === paper && rps === 'rock' || choiceVar === 
     scissors && rps === 'paper' || choiceVar === rock && rps === 'scissors';
 
-    if (rps = isDraw || youLose || youWin) {
+    if (checkRps = isDraw || youLose || youWin) {
         noAnswer = false}
         else {noAnswer = true }
     if (isDraw) {
+        console.log(choiceVar + ', ' + rps)
         return 'Draw! Try again!'; }
     if (youLose) {
+        console.log(choiceVar + ', ' + rps)
         return 'You lose!' }
     if (youWin) {
+        console.log(choiceVar + ', ' + rps)
         return 'You win!'}   
     if (noAnswer) {
+        console.log(choiceVar + ', ' + rps)
         return 'Not an answer!'
  }
 }
 
-
 function game() {
     let playerScore = 0
     let computerScore = 0
+    let scoreDisplay = 'You: ' + playerScore + ' Computer: ' + computerScore
     
     if (computerScore == 3) {
         computerWins = true
@@ -50,28 +55,20 @@ function game() {
         playerWins = true
     }   else {playerWins = false}
 
-    if (playerWins) {return 'Game Over! PLAYER WINS!'} 
-    if (computerWins) {return 'Game Over! COMPUTER WINS!'} 
+    if (playerWins) {return 'Game Over! PLAYER WINS!' + scoreDisplay} 
+    if (computerWins) {return 'Game Over! COMPUTER WINS!' + scoreDisplay} 
         else{
-            console.log('BEGIN!')
+            console.log('GO!')
             let round = playRound();
             if (round == 'You lose!') {
                 computerScore =+1
-                console.log('Your Score: ' + playerScore )
-                console.log('Computer Score: ' + computerScore )
+                console.log(scoreDisplay)
             }
             if (round == 'You win!') {
                 playerScore =+1
-                console.log('Your Score: ' + playerScore )
-                console.log('Computer Score: ' + computerScore )
+                console.log(scoreDisplay)
             }
             if (round == 'Draw! Try again!' || 'Not an answer!') {
-                console.log('Your Score: ' + playerScore )
-                console.log('Computer Score: ' + computerScore )
-                playRound();
-            }
-            console.log('Your Score: ' + playerScore )
-            console.log('Computer Score: ' + computerScore )
-
-    }
+                console.log(scoreDisplay)}
+        }
 }
