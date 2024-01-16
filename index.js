@@ -1,11 +1,9 @@
 const rock = "Rock"
 const paper = "Paper"
 const scissors = "Scissors"
-let playerScore = 0
-let computerScore = 0
 
 
-// This function performs the computer half of the RPS game
+// Grab and store random computer answer
 function getComputerChoice() {
     const possibleChoices = [rock, paper, scissors]
     let random = possibleChoices[Math.floor(Math.random() * possibleChoices.length)];
@@ -43,25 +41,37 @@ function playRound() {
 function game() {
     let playerScore = 0
     let computerScore = 0
-
     
+    if (computerScore == 3) {
+        computerWins = true
+    }   else {computerWins = false}
 
-    playRound();
-    playRound();
-    playRound();
-    playRound();
-    playRound();
-    if (playRound() == 'You lose!') {
-        let computerScore = computerScore +1
-        console.log(playerScore, computerScore)
+    if (playerScore == 3) {
+        playerWins = true
+    }   else {playerWins = false}
+
+    if (playerWins) {return 'Game Over! PLAYER WINS!'} 
+    if (computerWins) {return 'Game Over! COMPUTER WINS!'} 
+        else{
+            console.log('BEGIN!')
+            let round = playRound();
+            if (round == 'You lose!') {
+                computerScore =+1
+                console.log('Your Score: ' + playerScore )
+                console.log('Computer Score: ' + computerScore )
+            }
+            if (round == 'You win!') {
+                playerScore =+1
+                console.log('Your Score: ' + playerScore )
+                console.log('Computer Score: ' + computerScore )
+            }
+            if (round == 'Draw! Try again!' || 'Not an answer!') {
+                console.log('Your Score: ' + playerScore )
+                console.log('Computer Score: ' + computerScore )
+                playRound();
+            }
+            console.log('Your Score: ' + playerScore )
+            console.log('Computer Score: ' + computerScore )
+
     }
-    if (playRound() == 'You win!') {
-        let playerScore = playerScore +1
-        console.log(playerScore, computerScore)
-    }
-    if (playRound() == 'Draw! Try again!' || 'Not an answer!') {
-        playRound();
-    }
-    console.log('Your Score: ' + playerScore )
-    console.log('Computer Score: ' + computerScore )
 }
