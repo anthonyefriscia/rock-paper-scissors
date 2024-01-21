@@ -3,7 +3,7 @@ const paper = "Paper"
 const scissors = "Scissors"
 
 
-// Grab and store random computer answer
+// Grab and store random computer answer for playRound()
 function getComputerChoice() {
     const possibleChoices = [rock, paper, scissors]
     let random = possibleChoices[Math.floor(Math.random() * possibleChoices.length)];
@@ -42,33 +42,29 @@ function playRound() {
  }
 }
 
-function game() {
-    let playerScore = 0
-    let computerScore = 0
-    let scoreDisplay = 'You: ' + playerScore + ' Computer: ' + computerScore
-    
-    if (computerScore == 3) {
-        computerWins = true
-    }   else {computerWins = false}
+let gameLose = false
+let gameWin = false
+let playerScore = 0
+let computerScore = 0
 
-    if (playerScore == 3) {
-        playerWins = true
-    }   else {playerWins = false}
+function scoreCheck(computerScore, playerScore) {
+    if (computerScore == 5) {
+        gameLose = true
+    } else if (playerScore == 5) {
+        gameWin = true}
 
-    if (playerWins) {return 'Game Over! PLAYER WINS!' + scoreDisplay} 
-    if (computerWins) {return 'Game Over! COMPUTER WINS!' + scoreDisplay} 
-        else{
-            console.log('GO!')
-            let round = playRound();
-            if (round == 'You lose!') {
-                computerScore =+1
-                console.log(scoreDisplay)
-            }
-            if (round == 'You win!') {
-                playerScore =+1
-                console.log(scoreDisplay)
-            }
-            if (round == 'Draw! Try again!' || 'Not an answer!') {
-                console.log(scoreDisplay)}
-        }
+    if (gameWin == true) {
+        return gameWin
+    } else if (gameLose == true) {
+        return gameLose
+    }
 }
+
+function game() {
+
+    if (scoreCheck(computerScore, playerScore) == gameLose ) {
+        console.log('YOU LOSE! - ' +  'You: '+  playerScore + ' Computer: ' + computerScore);
+    }
+} 
+
+
